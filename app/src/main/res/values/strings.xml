@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TopicosAndroid</string>
     <string name="action_settings">Settings</string>
+
+    <string name="status">Status:</string>
+    <string name="begins_at">Começa em:</string>
+    <string name="ends_at">Termina em:</string>
+
 </resources>

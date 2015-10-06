@@ -1,5 +1,6 @@
 package com.topicos.topicosandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,10 +9,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-import com.topicos.topicosandroid.domain.Subject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private List<String> subjects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,26 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        // Mock object for subject
+        subjects = new ArrayList<String>();
+        subjects.add("DIM0533");
+        // Here will be used the DAO to get a list of subjects and fill the list of strings
+
+        Spinner spinnerSubject = (Spinner) findViewById(R.id.spinnerSubject);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, subjects);
+        spinnerSubject.setAdapter(adapter);
+
+        spinnerSubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // When you click a spinner item... Show the listview, for example.
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
     }

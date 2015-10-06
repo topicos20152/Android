@@ -39,10 +39,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
     public void onBindViewHolder(CustomViewHolder customViewHolder, int i) {
         Task task = tasks.get(i);
 
-        customViewHolder.title.setText(task.getTitle());
+        customViewHolder.title.setText(task.getName());
         customViewHolder.status.setText(task.getStatus());
-        customViewHolder.beginsAt.setText(task.getBeginsAt());
-        customViewHolder.endsAt.setText(task.getEndsAt());
+        customViewHolder.beginsAt.setText(task.getDateStart().toString());
+        customViewHolder.endsAt.setText(task.getDateEnd().toString());
     }
 
     @Override

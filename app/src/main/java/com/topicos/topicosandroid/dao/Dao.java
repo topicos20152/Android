@@ -11,6 +11,8 @@ import java.util.List;
  */
 public class Dao {
 
+    public Dao() {}
+
     public List<Task> getTasks(User user) {
         API api = new API();
 

@@ -17,8 +17,7 @@ public class API {
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
-    public API() {
-    }
+    public API() {}
 
     public void populate() throws ParseException {
 

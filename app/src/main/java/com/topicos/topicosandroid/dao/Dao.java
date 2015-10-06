@@ -1,5 +1,6 @@
 package com.topicos.topicosandroid.dao;
 
+import com.topicos.topicosandroid.api.API;
 import com.topicos.topicosandroid.domain.Task;
 import com.topicos.topicosandroid.domain.User;
 
@@ -11,6 +12,8 @@ import java.util.List;
 public class Dao {
 
     public List<Task> getTasks(User user) {
-        return null;
+        API api = new API();
+
+        return api.getTasks(user.getIdUser());
     }
 }

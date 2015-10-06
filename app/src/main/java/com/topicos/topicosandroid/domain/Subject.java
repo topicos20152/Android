@@ -10,6 +10,16 @@ public class Subject {
     private String name;
     private int credits;
 
+    public Subject() {
+    }
+
+    public Subject(int idSubject, String codeSubject, String name, int credits) {
+        this.idSubject = idSubject;
+        this.codeSubject = codeSubject;
+        this.name = name;
+        this.credits = credits;
+    }
+
     public int getIdSubject() {
         return idSubject;
     }

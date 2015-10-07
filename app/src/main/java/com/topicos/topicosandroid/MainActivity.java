@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private List<String> subjects;
+    private Spinner spinnerSubject;
+    private Button buttonOpenTasks;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +45,17 @@ public class MainActivity extends AppCompatActivity {
         subjects.add("DIM0533");
         // Here will be used the DAO to get a list of subjects and fill the list of strings
 
-        Spinner spinnerSubject = (Spinner) findViewById(R.id.spinnerSubject);
+        spinnerSubject = (Spinner) findViewById(R.id.spinnerSubject);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, subjects);
         spinnerSubject.setAdapter(adapter);
 
-        spinnerSubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        buttonOpenTasks = (Button) findViewById(R.id.buttonOpenTasks);
+        buttonOpenTasks.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // When you click a spinner item... Show the listview, for example.
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onClick(View v) {
+                intent = new Intent(MainActivity.this, TaskListActivity.class);
+                intent.putExtra("codeSubject", spinnerSubject.getSelectedItem().toString());
+                startActivity(intent);
             }
         });
     }

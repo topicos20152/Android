@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class TaskListActivity extends AppCompatActivity {
 
-    public static Subject subject;
+    public static Subject subject = new Subject();
     private RecyclerView mRecyclerView;
     private TaskListAdapter mAdapter;
     private TextView lbl_subject;

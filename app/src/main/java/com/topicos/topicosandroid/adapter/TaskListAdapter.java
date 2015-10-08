@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.topicos.topicosandroid.R;
 import com.topicos.topicosandroid.domain.Task;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -27,7 +29,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
     }
 
     @Override
-    public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public TaskListAdapter.CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         LayoutInflater inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.list_row, null);
 
@@ -36,13 +38,15 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
     }
 
     @Override
-    public void onBindViewHolder(CustomViewHolder customViewHolder, int i) {
+    public void onBindViewHolder(TaskListAdapter.CustomViewHolder customViewHolder, int i) {
         Task task = tasks.get(i);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MMM");
 
         customViewHolder.title.setText(task.getName());
         customViewHolder.status.setText(task.getStatus());
-        customViewHolder.beginsAt.setText(task.getDateStart().toString());
-        customViewHolder.endsAt.setText(task.getDateEnd().toString());
+        customViewHolder.beginsAt.setText(dateFormat.format(task.getDateStart()));
+        customViewHolder.endsAt.setText(dateFormat.format(task.getDateEnd()));
     }
 
     @Override

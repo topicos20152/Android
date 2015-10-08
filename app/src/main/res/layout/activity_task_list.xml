@@ -1,7 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:padding="5dp" >
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp" >
 
     <TextView
         android:id="@+id/subject"
@@ -9,13 +11,15 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignParentTop="true" />
 
-    <view
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
-        class="android.support.v7.widget.RecyclerView"
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="3dp"/>
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/subject" />
 
-</LinearLayout>
+</RelativeLayout>

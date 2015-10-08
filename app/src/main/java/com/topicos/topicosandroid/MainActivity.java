@@ -14,12 +14,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.topicos.topicosandroid.dao.Dao;
+import com.topicos.topicosandroid.domain.Subject;
+import com.topicos.topicosandroid.domain.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<String> subjects;
+    private List<Subject> subjects;
     private Spinner spinnerSubject;
     private Button buttonOpenTasks;
     private Intent intent;
@@ -41,12 +45,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Mock object for subject
-        subjects = new ArrayList<String>();
-        subjects.add("DIM0533");
+        User user = new User();
+        Dao dao = new Dao();
+        subjects = dao.getSubjects(user);
         // Here will be used the DAO to get a list of subjects and fill the list of strings
 
         spinnerSubject = (Spinner) findViewById(R.id.spinnerSubject);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, subjects);
+        ArrayAdapter<Subject> adapter = new ArrayAdapter<Subject>(this, android.R.layout.simple_spinner_item, subjects);
         spinnerSubject.setAdapter(adapter);
 
         buttonOpenTasks = (Button) findViewById(R.id.buttonOpenTasks);
@@ -54,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(MainActivity.this, TaskListActivity.class);
-                intent.putExtra("codeSubject", spinnerSubject.getSelectedItem().toString());
+                TaskListActivity.subject = subjects.get(0);
                 startActivity(intent);
             }
         });

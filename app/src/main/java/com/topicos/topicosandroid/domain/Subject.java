@@ -52,4 +52,8 @@ public class Subject {
         this.credits = credits;
     }
 
+    @Override
+    public String toString() {
+        return codeSubject + " " + name;
+    }
 }

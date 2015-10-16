@@ -1,7 +1,7 @@
 # Android
 This repository contains the source code for the SIGAA Task List Android app.
 
-## 2. Getting started:
+## 1. Getting started:
 The [Android SDK][1] is necessary to build the app. There are different options to install it in your system, depending of the IDE you decide to use. Check Google documentation about [installation][2] for more details on these options.
 
 [Android Studio][3] is currently the official Android IDE. Due to this, we recommend it as the IDE to use in your development environment. Follow the installation instructions [here][4].
@@ -21,3 +21,16 @@ To set up the project in Android Studio follow the next steps:
 [2]: https://developer.android.com/sdk/installing/index.html?pkg=tools
 [3]: https://developer.android.com/tools/studio/index.html
 [4]: https://developer.android.com/sdk/installing/index.html?pkg=studio
+
+## 2.Installation
+
+* Download and copy the [APK](https://github.com/topicos20152/Android/blob/master/TopicosApp.apk?raw=true) to your device;
+* Enable intallation unknown sources on your device, more information access [User Opt-In for Apps from Unknown Sources](http://developer.android.com/distribute/tools/open-distribution.html);
+* Once copied the apk file and enable installation unknown sources, go to the apk file on your device and click to install.
+
+## 3. Development Team
+   * [Jeffersson Galvão Araujo](https://github.com/jefferssongalvao) - jefferssondeveloper@gmail.com
+   * [Lilian Ketlyn Freire do Rego](https://github.com/lilianrg) - lili_ketlyn@hotmail.com
+   * [Maychell Fernandes de Oliveira](https://github.com/Maychell) - maychellfernandes@hotmail.com
+   * [Pablo GAbriel Rodrigues Nesves Bedoya](https://github.com/pablobedoya) - pablo.reds@hotmail.com
+   * [Victor Vilar Rapozo](https://github.com/victorvilar) - victor_vilar@hotmail.com

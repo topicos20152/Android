@@ -24,9 +24,9 @@ To set up the project in Android Studio follow the next steps:
 
 ## 2.Installation
 
-* Download and copy the [APK](https://github.com/topicos20152/Android/blob/master/TopicosApp.apk?raw=true) to your device;
-* Enable unknown sources on your device, for more information access [User Opt-In for Apps from Unknown Sources](http://developer.android.com/distribute/tools/open-distribution.html);
-* Once copied the apk file and enable installation unknown sources, go to the apk file on your device and click to install.
+* Download and copy the [APK File](https://github.com/topicos20152/Android/blob/master/TopicosApp.apk?raw=true) to your device;
+* You should now enable installation from unknown sources on your device. For more information visit the link: [User Opt-In for Apps from Unknown Sources](http://developer.android.com/distribute/tools/open-distribution.html);
+* Once you've copied the APK file and allowed the installation from unknown sources, go to the apk file on your device and click install.
 
 ## 3. Development Team
    * [Jeffersson Galvão Araujo](https://github.com/jefferssongalvao) - jefferssondeveloper@gmail.com

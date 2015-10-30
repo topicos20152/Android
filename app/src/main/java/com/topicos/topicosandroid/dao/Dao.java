@@ -21,7 +21,7 @@ public class Dao {
         List<Task> tasks = new ArrayList<>();
 
         try {
-            tasks = api.getTasks(user.getIdUser());
+//            tasks = api.getTasks(user.getIdUser());
         } catch (Exception e) {
             e.printStackTrace();
         }

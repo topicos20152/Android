@@ -5,7 +5,7 @@ package com.topicos.topicosandroid.domain;
  */
 public class Subject {
 
-    private int idSubject;
+    private String idSubject;
     private String codeSubject;
     private String name;
     private int credits;
@@ -13,18 +13,18 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(int idSubject, String codeSubject, String name, int credits) {
+    public Subject(String idSubject, String codeSubject, String name, int credits) {
         this.idSubject = idSubject;
         this.codeSubject = codeSubject;
         this.name = name;
         this.credits = credits;
     }
 
-    public int getIdSubject() {
+    public String getIdSubject() {
         return idSubject;
     }
 
-    public void setIdSubject(int idSubject) {
+    public void setIdSubject(String idSubject) {
         this.idSubject = idSubject;
     }
 

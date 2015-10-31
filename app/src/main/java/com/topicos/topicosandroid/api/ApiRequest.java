@@ -1,7 +1,6 @@
 package com.topicos.topicosandroid.api;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,11 +15,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by maychellfernandesdeoliveira on 30/10/2015.
  */
-public class ApiRequest extends AsyncTask<Map<String, String>, Void, List<Map<String, String>>> {
+public class ApiRequest extends AsyncTask<HashMap<String, String>, Void, List<Map<String, String>>> {
 
     private String url = "http://topicos-api.herokuapp.com/";
     private String methodTarget;
@@ -34,9 +34,9 @@ public class ApiRequest extends AsyncTask<Map<String, String>, Void, List<Map<St
     }
 
     @Override
-    protected List<Map<String, String>> doInBackground(Map<String, String>... params) {
+    protected List<Map<String, String>> doInBackground(HashMap<String, String>... params) {
         try {
-            return downloadUrl(url+methodTarget);
+            return downloadUrl(url+methodTarget, params);
         } catch (IOException e) {
             Map<String, String> error = new HashMap<>();
             error.put("ERROR", "Unable to retrieve web page. URL may be invalid.");
@@ -45,15 +45,8 @@ public class ApiRequest extends AsyncTask<Map<String, String>, Void, List<Map<St
             return errorResult;
         }
     }
-    // onPostExecute displays the results of the AsyncTask.
 
-    @Override
-    protected void onPostExecute(List<Map<String, String>> stringStringMap) {
-        Log.d("DEBUG", "DEU CERTO!");
-        //super.onPostExecute(stringStringMap);
-    }
-
-    private List<Map<String, String>> downloadUrl(String myurl) throws IOException {
+    private List<Map<String, String>> downloadUrl(String myurl, HashMap<String, String>... params) throws IOException {
         InputStream is = null;
         // Only display the first 500 characters of the retrieved
         // web page content.
@@ -70,6 +63,16 @@ public class ApiRequest extends AsyncTask<Map<String, String>, Void, List<Map<St
             conn.setConnectTimeout(15000);
             conn.setRequestMethod(method);
             conn.setDoInput(true);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+            //Inserting parameters, if it exists
+            if(params != null && params.length>0) {
+                HashMap<String, String> map = params[0];
+                Set<String> keys = map.keySet();
+                for(String key : keys)
+                    conn.addRequestProperty(key, map.get(key));
+            }
+
             // Starts the query
             conn.connect();
 

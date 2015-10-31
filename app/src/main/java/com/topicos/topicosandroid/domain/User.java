@@ -1,31 +1,34 @@
 package com.topicos.topicosandroid.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by maychellfernandesdeoliveira on 05/10/2015.
  */
-public class User {
+public class User extends Entity {
 
-    private int idUser;
     private String regNumber;
     private String name;
     private List<Subject> taskSubject;
 
     public User() {}
 
-    public User(int idUser, String regNumber, String name){
-        this.idUser = idUser;
+    public User(String idUser, String regNumber, String name){
+        this.setId(idUser);
         this.regNumber = regNumber;
         this.name = name;
     }
 
-    public int getIdUser() {
-        return idUser;
-    }
+    public static List<String> keys() {
+        List<String> keys = new ArrayList<String>();
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+        keys.add("id");
+        keys.add("register_number");
+        keys.add("name");
+        keys.add("subjects");
+
+        return keys;
     }
 
     public String getName() {

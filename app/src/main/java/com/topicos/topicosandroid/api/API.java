@@ -21,11 +21,11 @@ public class API {
 
     public void populate() {
 
-        User u1 = new User(1, "2013051065", "JEFFERSSON GALVÃO ARAUJO");
-        User u2 = new User(2, "2013049325", "LILIAN KETLYN FREIRE DO REGO");
-        User u3 = new User(3, "2012003027", "MAYCHELL FERNANDES DE OLIVEIRA");
-        User u4 = new User(4, "2011078758", "PABLO GABRIEL RODRIGUES NEVES BEDOYA");
-        User u5 = new User(5, "2013022967", "VICTOR VILAR RAPOZO");
+        User u1 = new User("1", "2013051065", "JEFFERSSON GALVÃO ARAUJO");
+        User u2 = new User("2", "2013049325", "LILIAN KETLYN FREIRE DO REGO");
+        User u3 = new User("3", "2012003027", "MAYCHELL FERNANDES DE OLIVEIRA");
+        User u4 = new User("4", "2011078758", "PABLO GABRIEL RODRIGUES NEVES BEDOYA");
+        User u5 = new User("5", "2013022967", "VICTOR VILAR RAPOZO");
 
     }
 

@@ -27,7 +27,7 @@ public class TaskDao {
             for (Map<String, String> taskMap : new ApiRequest("tasks", "GET", Task.keys()).execute().get()) {
                 Task task = new Task();
 
-                task.setIdTask(taskMap.get("id"));
+                task.setId(taskMap.get("id"));
                 task.setName(taskMap.get("title"));
 
                 //Formatting date

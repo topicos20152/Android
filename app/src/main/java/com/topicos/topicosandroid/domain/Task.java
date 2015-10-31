@@ -1,13 +1,15 @@
 package com.topicos.topicosandroid.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by maychellfernandesdeoliveira on 05/10/2015.
  */
 public class Task {
 
-    private int idTask;
+    private String idTask;
     private String name;
     private String description;
     private Date dateStart;
@@ -17,7 +19,7 @@ public class Task {
 
     public Task() {}
 
-    public Task(int idTask, String name, String description, Date dateStart, Date dateEnd, Subject subject, String status) {
+    public Task(String idTask, String name, String description, Date dateStart, Date dateEnd, Subject subject, String status) {
         this.idTask = idTask;
         this.name = name;
         this.description = description;
@@ -25,6 +27,17 @@ public class Task {
         this.dateEnd = dateEnd;
         this.subject = subject;
         this.status = status;
+    }
+
+    public static List<String> keys(){
+        List<String> keys = new ArrayList<String>();
+
+        keys.add("id");
+        keys.add("course_title");
+        keys.add("delivery_date");
+        keys.add("title");
+
+        return keys;
     }
 
     public String getName() {
@@ -59,11 +72,11 @@ public class Task {
         this.dateEnd = dateEnd;
     }
 
-    public int getIdTask() {
+    public String getIdTask() {
         return idTask;
     }
 
-    public void setIdTask(int idTask) {
+    public void setIdTask(String idTask) {
         this.idTask = idTask;
     }
 

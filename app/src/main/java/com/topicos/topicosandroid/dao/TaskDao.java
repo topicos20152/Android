@@ -15,11 +15,13 @@ import java.util.Map;
 /**
  * Created by batman on 30/10/15.
  */
-public class TaskDao {
+public class TaskDao extends GenericDao<Task> {
 
-    public TaskDao() {}
+    public TaskDao() {
+        setClazz(Task.class);
+    }
 
-    public List<Task> getTasks(User user) {
+    public List<Task> get(User user) {
 
         List<Task> tasks = new ArrayList<Task>();
 

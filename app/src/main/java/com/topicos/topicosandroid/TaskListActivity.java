@@ -48,7 +48,7 @@ public class TaskListActivity extends AppCompatActivity {
     private void loadData() {
         User user = new User();
         TaskDao dao = new TaskDao();
-        List<Task> tasks = dao.getTasks(user);
+        List<Task> tasks = dao.get(user);
 
         mAdapter = new TaskListAdapter(this, tasks);
         mRecyclerView.setAdapter(mAdapter);

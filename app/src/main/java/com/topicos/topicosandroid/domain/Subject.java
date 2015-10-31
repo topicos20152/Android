@@ -1,11 +1,13 @@
 package com.topicos.topicosandroid.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by maychellfernandesdeoliveira on 05/10/2015.
  */
-public class Subject {
+public class Subject extends Entity {
 
-    private String idSubject;
     private String codeSubject;
     private String name;
     private int credits;
@@ -14,18 +16,21 @@ public class Subject {
     }
 
     public Subject(String idSubject, String codeSubject, String name, int credits) {
-        this.idSubject = idSubject;
+        this.setId(idSubject);
         this.codeSubject = codeSubject;
         this.name = name;
         this.credits = credits;
     }
 
-    public String getIdSubject() {
-        return idSubject;
-    }
+    public static List<String> keys() {
+        List<String> keys = new ArrayList<String>();
 
-    public void setIdSubject(String idSubject) {
-        this.idSubject = idSubject;
+        keys.add("id");
+        keys.add("code_subject");
+        keys.add("name");
+        keys.add("credits");
+
+        return keys;
     }
 
     public String getCodeSubject() {

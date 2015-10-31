@@ -7,9 +7,8 @@ import java.util.List;
 /**
  * Created by maychellfernandesdeoliveira on 05/10/2015.
  */
-public class Task {
+public class Task extends Entity {
 
-    private String idTask;
     private String name;
     private String description;
     private Date dateStart;
@@ -20,7 +19,7 @@ public class Task {
     public Task() {}
 
     public Task(String idTask, String name, String description, Date dateStart, Date dateEnd, Subject subject, String status) {
-        this.idTask = idTask;
+        this.setId(idTask);
         this.name = name;
         this.description = description;
         this.dateStart = dateStart;
@@ -29,7 +28,7 @@ public class Task {
         this.status = status;
     }
 
-    public static List<String> keys(){
+    public static List<String> keys() {
         List<String> keys = new ArrayList<String>();
 
         keys.add("id");
@@ -70,14 +69,6 @@ public class Task {
 
     public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
-    }
-
-    public String getIdTask() {
-        return idTask;
-    }
-
-    public void setIdTask(String idTask) {
-        this.idTask = idTask;
     }
 
     public Subject getSubject() {

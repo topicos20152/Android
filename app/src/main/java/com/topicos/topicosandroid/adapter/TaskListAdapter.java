@@ -1,6 +1,7 @@
 package com.topicos.topicosandroid.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.topicos.topicosandroid.R;
+import com.topicos.topicosandroid.TaskDetailsActivity;
 import com.topicos.topicosandroid.domain.Task;
 
 import java.text.SimpleDateFormat;
@@ -39,7 +41,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
 
     @Override
     public void onBindViewHolder(TaskListAdapter.CustomViewHolder customViewHolder, int i) {
-        Task task = tasks.get(i);
+        final Task task = tasks.get(i);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
@@ -47,6 +49,15 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
         customViewHolder.status.setText("open");
         customViewHolder.beginsAt.setText("now");//dateFormat.format(task.getDateStart()));
         customViewHolder.endsAt.setText(dateFormat.format(task.getDateEnd()));
+
+        customViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(ctx.getApplicationContext(), TaskDetailsActivity.class);
+                it.putExtra("TASK_ID", task.getId());
+                ctx.startActivity(it);
+            }
+        });
     }
 
     @Override

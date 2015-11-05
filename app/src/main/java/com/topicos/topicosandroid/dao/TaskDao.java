@@ -45,4 +45,28 @@ public class TaskDao {
         return tasks;
     }
 
+    public Task getSingleTask(String id) {
+        Task task = new Task();
+        try {
+            for (Map<String, String> taskMap : new ApiRequest("tasks/"+id, "GET", Task.keys()).execute().get()) {
+
+                task.setId(taskMap.get("id"));
+                task.setName(taskMap.get("title"));
+                task.setSubject(new Subject());
+                task.getSubject().setName("course_title");
+                task.setStatus(taskMap.get("status"));
+
+                //Formatting date
+                SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+                task.setDateEnd(inFormat.parse(taskMap.get("delivery_date")));
+
+                task.setDescription(taskMap.get("description"));
+
+                break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return task;
+    }
 }

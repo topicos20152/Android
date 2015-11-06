@@ -10,25 +10,21 @@ public class Subject extends Entity {
 
     private String codeSubject;
     private String name;
-    private int credits;
 
     public Subject() {
     }
 
-    public Subject(String idSubject, String codeSubject, String name, int credits) {
+    public Subject(String idSubject, String codeSubject, String name) {
         this.setId(idSubject);
         this.codeSubject = codeSubject;
         this.name = name;
-        this.credits = credits;
     }
 
     public static List<String> keys() {
         List<String> keys = new ArrayList<String>();
 
-        keys.add("id");
-        keys.add("code_subject");
-        keys.add("name");
-        keys.add("credits");
+        keys.add(Subject.ID);
+        keys.add(Subject.NAME);
 
         return keys;
     }
@@ -49,16 +45,11 @@ public class Subject extends Entity {
         this.name = name;
     }
 
-    public int getCredits() {
-        return credits;
-    }
-
-    public void setCredits(int credits) {
-        this.credits = credits;
-    }
-
     @Override
     public String toString() {
         return codeSubject + " " + name;
     }
+
+    public static final String ID = "_id";
+    public static final String NAME = "title";
 }

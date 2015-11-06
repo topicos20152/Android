@@ -24,7 +24,11 @@ public class TaskDao {
         List<Task> tasks = new ArrayList<Task>();
 
         try {
-            for (Map<String, String> taskMap : new ApiRequest("tasks", "GET", Task.keys()).execute().get()) {
+            List<Map<String, String>> allTasks = new ApiRequest("tasks", "GET", Task.keys()).execute().get();
+            if(allTasks == null || allTasks.isEmpty())
+                return tasks;
+
+            for (Map<String, String> taskMap : allTasks) {
                 Task task = new Task();
 
                 task.setId(taskMap.get("id"));

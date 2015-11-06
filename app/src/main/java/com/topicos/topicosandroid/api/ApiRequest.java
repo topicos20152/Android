@@ -90,7 +90,8 @@ public class ApiRequest extends AsyncTask<HashMap<String, String>, Void, List<Ma
                 JSONObject json = jObj.getJSONObject(i);
                 resultObject = new HashMap<>();
                 for(String key : keys)
-                    resultObject.put(key, json.getString(key));
+                    if(json.has(key))
+                        resultObject.put(key, json.getString(key));
 
                 resultList.add(resultObject);
             }

@@ -15,10 +15,11 @@ public class Task extends Entity {
     private Date dateEnd;
     private Subject subject;
     private String status;
+    private String attachment;
 
     public Task() {}
 
-    public Task(String idTask, String name, String description, Date dateStart, Date dateEnd, Subject subject, String status) {
+    public Task(String idTask, String name, String description, Date dateStart, Date dateEnd, Subject subject, String status, String attachment) {
         this.setId(idTask);
         this.name = name;
         this.description = description;
@@ -26,15 +27,20 @@ public class Task extends Entity {
         this.dateEnd = dateEnd;
         this.subject = subject;
         this.status = status;
+        this.attachment = attachment;
     }
 
     public static List<String> keys() {
         List<String> keys = new ArrayList<String>();
 
-        keys.add("id");
-        keys.add("course_title");
-        keys.add("delivery_date");
-        keys.add("title");
+        keys.add(Task.ID);
+        keys.add(Task.ATTACHMENT);
+        keys.add(Task.SUBJECT);
+        keys.add(Task.DATE_START);
+        keys.add(Task.DATE_END);
+        keys.add(Task.DESCRIPTION);
+        keys.add(Task.STATUS);
+        keys.add(Task.NAME);
 
         return keys;
     }
@@ -82,4 +88,22 @@ public class Task extends Entity {
     public String getStatus() { return status; }
 
     public void setStatus(String status) { this.status = status; }
+
+    public String getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(String attachment) {
+        this.attachment = attachment;
+    }
+
+    public static final String ID = "_id";
+    public static final String ATTACHMENT = "attachment";
+    public static final String SUBJECT = "course_id";
+    public static final String DATE_START = "created_at";
+    public static final String DATE_END = "delivery_date";
+    public static final String DESCRIPTION = "description";
+    public static final String STATUS = "status";
+    public static final String NAME = "title";
+
 }

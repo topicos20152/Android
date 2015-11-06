@@ -10,23 +10,24 @@ public class User extends Entity {
 
     private String regNumber;
     private String name;
-    private List<Subject> taskSubject;
+    private String userName;
 
     public User() {}
 
-    public User(String idUser, String regNumber, String name){
+    public User(String idUser, String regNumber, String name, String userName) {
         this.setId(idUser);
         this.regNumber = regNumber;
         this.name = name;
+        this.userName = userName;
     }
 
     public static List<String> keys() {
         List<String> keys = new ArrayList<String>();
 
-        keys.add("id");
-        keys.add("register_number");
-        keys.add("name");
-        keys.add("subjects");
+        keys.add(User.ID);
+        keys.add(User.NAME);
+        keys.add(User.REG_NUMBER);
+        keys.add(User.USER_NAME);
 
         return keys;
     }
@@ -47,11 +48,16 @@ public class User extends Entity {
         this.regNumber = regNumber;
     }
 
-    public List<Subject> getTaskUser() {
-        return taskSubject;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setTaskUser(List<Subject> taskUser) {
-        this.taskSubject = taskUser;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
+
+    public static final String ID = "_id";
+    public static final String NAME = "name";
+    public static final String REG_NUMBER = "sigaa_uuid";
+    public static final String USER_NAME = "username";
 }

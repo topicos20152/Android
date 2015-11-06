@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class User extends Entity {
 
+    public static final String CLASS_NAME = "user";
     private String regNumber;
     private String name;
     private String userName;

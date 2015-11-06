@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Subject extends Entity {
 
+    public static final String CLASS_NAME = "course_user";
     private String codeSubject;
     private String name;
 

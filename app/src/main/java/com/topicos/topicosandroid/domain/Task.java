@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Task extends Entity {
 
+    public static final String CLASS_NAME = "tasks";
     private String name;
     private String description;
     private Date dateStart;

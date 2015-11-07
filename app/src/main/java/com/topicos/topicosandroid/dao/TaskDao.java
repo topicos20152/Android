@@ -7,7 +7,6 @@ import com.topicos.topicosandroid.domain.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -24,18 +23,20 @@ public class TaskDao {
         List<Task> tasks = new ArrayList<Task>();
 
         try {
-            for (Map<String, String> taskMap : new ApiRequest("tasks", "GET", Task.keys()).execute().get()) {
+            List<Map<String, String>> allTasks = new ApiRequest(Task.CLASS_NAME, "GET", Task.keys()).execute().get();
+            if(allTasks == null || allTasks.isEmpty())
+                return tasks;
+
+            for (Map<String, String> taskMap : allTasks) {
                 Task task = new Task();
 
-                task.setId(taskMap.get("id"));
-                task.setName(taskMap.get("title"));
+                task.setId(taskMap.get(Task.ID));
+                task.setName(taskMap.get(Task.NAME));
+                task.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", taskMap.get(Task.SUBJECT)));
 
                 //Formatting date
                 SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-                task.setDateEnd(inFormat.parse(taskMap.get("delivery_date")));
-
-                task.setSubject(new Subject());
-                task.getSubject().setName("course_title");
+                task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_END)));
 
                 tasks.add(task);
             }
@@ -45,25 +46,28 @@ public class TaskDao {
         return tasks;
     }
 
-    public Task getSingleTask(String id) {
+    public Task getTask(String id) {
         Task task = new Task();
         try {
-            for (Map<String, String> taskMap : new ApiRequest("tasks/"+id, "GET", Task.keys()).execute().get()) {
+            List<Map<String, String>> allTasks = new ApiRequest(Task.CLASS_NAME+"/"+id, "GET", Task.keys()).execute().get();
+            if(allTasks == null || allTasks.isEmpty())
+                return task;
 
-                task.setId(taskMap.get("id"));
-                task.setName(taskMap.get("title"));
-                task.setSubject(new Subject());
-                task.getSubject().setName("course_title");
-                task.setStatus(taskMap.get("status"));
+            Map<String, String> taskMap = allTasks.get(0);
 
-                //Formatting date
-                SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-                task.setDateEnd(inFormat.parse(taskMap.get("delivery_date")));
+            task.setId(taskMap.get(Task.ID));
+            task.setName(taskMap.get(Task.NAME));
+            task.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", taskMap.get(Task.SUBJECT)));
+            task.setStatus(taskMap.get(Task.STATUS));
 
-                task.setDescription(taskMap.get("description"));
+            //Formatting date
+            SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+            //task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_START)));
+            task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_END)));
 
-                break;
-            }
+            task.setDescription(taskMap.get(Task.DESCRIPTION));
+            task.setAttachment(taskMap.get(Task.ATTACHMENT));
+
         } catch (Exception e) {
             e.printStackTrace();
         }

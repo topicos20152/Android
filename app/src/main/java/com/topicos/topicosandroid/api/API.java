@@ -19,6 +19,7 @@ public class API {
 
     public API() {}
 
+    /*
     public void populate() {
 
         User u1 = new User("1", "2013051065", "JEFFERSSON GALVÃO ARAUJO");
@@ -28,19 +29,17 @@ public class API {
         User u5 = new User("5", "2013022967", "VICTOR VILAR RAPOZO");
 
     }
+    */
 
     public List<Subject> getSubjects() {
         List<Subject> subjects = new ArrayList<>();
 
-        subjects.add(new Subject("1", "DIM0533", "TÓPICOS ESPECIAIS EM ENGENHARIA DE SOFTWARE III", 4));
-        subjects.add(new Subject("2", "IMD0409", "DESENVOLVIMENTO DE SISTEMAS WEB II", 4));
-        subjects.add(new Subject("3", "IMD0403", "PROGRAMAÇÃO COM BANCO DE DADOS", 4));
-        subjects.add(new Subject("4", "IMD0411", "INTRODUÇÃO À GOVERNANÇA E GESTÃO DE TI", 4));
-        subjects.add(new Subject("5", "IMD0410", "PROGRAMAÇÃO CONCORRENTE E DISTRIBUÍDA", 4));
-        subjects.add(new Subject("6", "IMD0406", "PROTOCOLO E SERVIÇOS DE INTERNET", 4));
-        subjects.add(new Subject("7", "IMD0422", "SISTEMAS DE INTELIGÊNCIA EMPRESARIAL", 4));
+        subjects.add(new Subject("5630be8511c8bd0003000002", "DIM0533", "Topicos III"));
+        subjects.add(new Subject("5630be8511c8bd0003000001", "IMD0409", "Topicos II"));
+        subjects.add(new Subject("5630be8511c8bd0003000004", "IMD0403", "Topicos V"));
+        subjects.add(new Subject("5630be8511c8bd0003000003", "IMD0411", "Topicos IV"));
+        subjects.add(new Subject("5630be8511c8bd0003000000", "IMD0410", "Topicos I"));
 
         return subjects;
     }
-
 }

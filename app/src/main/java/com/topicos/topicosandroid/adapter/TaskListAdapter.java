@@ -46,8 +46,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
         customViewHolder.title.setText(task.getName());
-        customViewHolder.status.setText("open");
-        customViewHolder.beginsAt.setText("now");//dateFormat.format(task.getDateStart()));
         customViewHolder.endsAt.setText(dateFormat.format(task.getDateEnd()));
 
         customViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -64,14 +62,12 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
     public int getItemCount() { return tasks.size(); }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView title, status, beginsAt, endsAt;
+        protected TextView title, endsAt;
 
         public CustomViewHolder(View view) {
             super(view);
 
             this.title = (TextView) view.findViewById(R.id.title);
-            this.status = (TextView) view.findViewById(R.id.status);
-            this.beginsAt = (TextView) view.findViewById(R.id.begins_at);
             this.endsAt = (TextView) view.findViewById(R.id.ends_at);
         }
     }

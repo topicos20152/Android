@@ -2,6 +2,7 @@ package com.topicos.topicosandroid;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.topicos.topicosandroid.dao.TaskDao;
 import com.topicos.topicosandroid.domain.Task;
@@ -11,6 +12,8 @@ import com.topicos.topicosandroid.domain.Task;
  */
 public class TaskDetailsActivity extends AppCompatActivity {
 
+    private TextView subject, title, description, ends_at, status, attachment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,13 +22,35 @@ public class TaskDetailsActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String id = bundle.getString("TASK_ID");
 
-        getTask(id);
+        this.subject = (TextView) findViewById(R.id.subject);
+        this.title = (TextView) findViewById(R.id.title);
+        this.description = (TextView) findViewById(R.id.description);
+        this.ends_at = (TextView) findViewById(R.id.ends_at);
+        this.status = (TextView) findViewById(R.id.status);
+        this.attachment = (TextView) findViewById(R.id.attachment);
+
+        Task task = getTask(id);
+
+        if(task != null) {
+            subject.setText(task.getSubject().getName());
+            title.setText(task.getName());
+            description.setText(task.getDescription());
+            ends_at.setText(task.getDateEnd().toString().split("G")[0]);
+            status.setText(task.getStatus());
+            attachment.setText(task.getAttachment());
+        }
+
     }
 
-    private void getTask(String id) {
+    private Task getTask(String id) {
         TaskDao taskDao = new TaskDao();
+        Task task = null;
+        try {
+            task = taskDao.getTask(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        //Criar o metodo getTask(String id) no TaskDao
-        //Task task = taskDao.getTask(id);
+        return task;
     }
 }

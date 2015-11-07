@@ -37,7 +37,7 @@ public class Task extends Entity {
         keys.add(Task.ID);
         keys.add(Task.ATTACHMENT);
         keys.add(Task.SUBJECT);
-        keys.add(Task.DATE_START);
+        //keys.add(Task.DATE_START);
         keys.add(Task.DATE_END);
         keys.add(Task.DESCRIPTION);
         keys.add(Task.STATUS);
@@ -98,10 +98,10 @@ public class Task extends Entity {
         this.attachment = attachment;
     }
 
-    public static final String ID = "_id";
+    public static final String ID = "id";
     public static final String ATTACHMENT = "attachment";
-    public static final String SUBJECT = "course_id";
-    public static final String DATE_START = "created_at";
+    public static final String SUBJECT = "course_title";
+    //public static final String DATE_START = "created_at";
     public static final String DATE_END = "delivery_date";
     public static final String DESCRIPTION = "description";
     public static final String STATUS = "status";

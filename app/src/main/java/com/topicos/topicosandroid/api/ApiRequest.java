@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -84,7 +85,13 @@ public class ApiRequest extends AsyncTask<HashMap<String, String>, Void, List<Ma
             }
             br.close();
 
-            JSONArray jObj = new JSONArray(sb.toString());
+            JSONArray jObj = new JSONArray();
+            Object jsonResult = new JSONTokener(sb.toString()).nextValue();
+            if (jsonResult instanceof JSONObject) {
+                jObj.put(new JSONObject(sb.toString()));
+            }
+            else if (jsonResult instanceof JSONArray)
+                jObj = new JSONArray(sb.toString());
 
             for(int i=0; i<jObj.length(); ++i) {
                 JSONObject json = jObj.getJSONObject(i);

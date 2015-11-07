@@ -30,15 +30,13 @@ public class TaskDao {
             for (Map<String, String> taskMap : allTasks) {
                 Task task = new Task();
 
-                task.setId(taskMap.get("id"));
-                task.setName(taskMap.get("title"));
+                task.setId(taskMap.get(Task.ID));
+                task.setName(taskMap.get(Task.NAME));
+                task.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", taskMap.get(Task.SUBJECT)));
 
                 //Formatting date
                 SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-                task.setDateEnd(inFormat.parse(taskMap.get("delivery_date")));
-
-                task.setSubject(new Subject());
-                task.getSubject().setName("course_title");
+                task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_END)));
 
                 tasks.add(task);
             }
@@ -57,17 +55,18 @@ public class TaskDao {
 
             Map<String, String> taskMap = allTasks.get(0);
 
-            task.setId(taskMap.get("id"));
-            task.setName(taskMap.get("title"));
-            task.setSubject(new Subject());
-            task.getSubject().setName("course_title");
-            task.setStatus(taskMap.get("status"));
+            task.setId(taskMap.get(Task.ID));
+            task.setName(taskMap.get(Task.NAME));
+            task.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", taskMap.get(Task.SUBJECT)));
+            task.setStatus(taskMap.get(Task.STATUS));
 
             //Formatting date
             SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-            task.setDateEnd(inFormat.parse(taskMap.get("delivery_date")));
+            //task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_START)));
+            task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_END)));
 
-            task.setDescription(taskMap.get("description"));
+            task.setDescription(taskMap.get(Task.DESCRIPTION));
+            task.setAttachment(taskMap.get(Task.ATTACHMENT));
 
         } catch (Exception e) {
             e.printStackTrace();

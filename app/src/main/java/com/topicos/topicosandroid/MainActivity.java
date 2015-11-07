@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(MainActivity.this, TaskListActivity.class);
-                TaskListActivity.subject = subjects.get(0);
+                TaskListActivity.subject = (Subject) spinnerSubject.getSelectedItem();
                 startActivity(intent);
             }
         });

@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.topicos.topicosandroid.dao.SubjectDao;
 import com.topicos.topicosandroid.domain.Subject;
 import com.topicos.topicosandroid.domain.User;
@@ -60,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        drawer = new DrawerBuilder().withActivity(this).build();
+        drawer = new DrawerBuilder().withActivity(this)
+                .withToolbar(toolbar)
+                .build();
     }
 
     @Override

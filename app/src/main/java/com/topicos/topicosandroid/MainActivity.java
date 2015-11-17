@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.topicos.topicosandroid.dao.SubjectDao;
 import com.topicos.topicosandroid.domain.Subject;
 import com.topicos.topicosandroid.domain.User;
@@ -24,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerSubject;
     private Button buttonOpenTasks;
     private Intent intent;
+
+    private Drawer drawer;
+    private AccountHeader accountHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        drawer = new DrawerBuilder().withActivity(this).build();
     }
 
     @Override

@@ -12,7 +12,8 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorPrimary"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

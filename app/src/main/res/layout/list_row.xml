@@ -12,7 +12,7 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:background="#fef9d9"
+            android:background="#f7f7f7"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
@@ -27,7 +27,7 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#8e8ed7"
+                    android:textColor="@color/colorPrimary"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="16sp" />
@@ -43,14 +43,16 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="3dp"
                         android:text="@string/ends_at"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textColor="@color/colorPrimary"/>
 
                     <TextView
                         android:id="@+id/ends_at"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="3dp"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textColor="@color/colorPrimary"/>
 
                 </LinearLayout>
             </LinearLayout>

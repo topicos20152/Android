@@ -23,5 +23,7 @@
         android:text="Abrir Tarefas"
         android:id="@+id/buttonOpenTasks"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorTextButton"/>
 </RelativeLayout>

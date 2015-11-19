@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Mocking user with the same data from api
-        if(Parameter.user == null)
-            Parameter.user = new User("563cc7738995e50003000001", "123456", "Android Test", "android_test");
+        //if(Parameter.user == null)
+        //    Parameter.user = new User("563cc7738995e50003000001", "123456", "Android Test", "android_test");
 
         SubjectDao dao = new SubjectDao();
         subjects = dao.getSubjects(Parameter.user);

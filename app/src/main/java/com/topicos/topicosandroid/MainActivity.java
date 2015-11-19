@@ -1,18 +1,17 @@
 package com.topicos.topicosandroid;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -24,11 +23,12 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
-import com.mikepenz.materialdrawer.model.ToggleDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+import com.topicos.topicosandroid.adapter.TaskListAdapter;
 import com.topicos.topicosandroid.dao.SubjectDao;
+import com.topicos.topicosandroid.dao.TaskDao;
 import com.topicos.topicosandroid.domain.Subject;
+import com.topicos.topicosandroid.domain.Task;
 import com.topicos.topicosandroid.domain.User;
 import com.topicos.topicosandroid.utils.Parameter;
 
@@ -36,10 +36,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static Subject subject = new Subject();
+    private RecyclerView mRecyclerView;
+    private TaskListAdapter mAdapter;
+
     private List<Subject> subjects;
-    private Spinner spinnerSubject;
-    private Button buttonOpenTasks;
-    private Intent intent;
 
     private Drawer drawer;
     private AccountHeader accountHeader;
@@ -57,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Sigaa-X");
-        toolbar.setSubtitle("TaskManager");
+        toolbar.setTitle("SIGAA-X");
         setSupportActionBar(toolbar);
 
         // Mocking user with the same data from api
@@ -67,22 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         SubjectDao dao = new SubjectDao();
         subjects = dao.getSubjects(Parameter.user);
-        // Here will be used the DAO to get a list of subjects and fill the list of strings
-
-        spinnerSubject = (Spinner) findViewById(R.id.spinnerSubject);
-        ArrayAdapter<Subject> adapter = new ArrayAdapter<Subject>(this, android.R.layout.simple_spinner_item, subjects);
-        spinnerSubject.setAdapter(adapter);
-
-        buttonOpenTasks = (Button) findViewById(R.id.buttonOpenTasks);
-        buttonOpenTasks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(MainActivity.this, TaskListActivity.class);
-                TaskListActivity.subject = (Subject) spinnerSubject.getSelectedItem();
-                startActivity(intent);
-            }
-        });
-
 
         accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -120,11 +104,22 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build();
 
-        drawer.addItem(new PrimaryDrawerItem().withName("Turma 1").withIcon(R.drawable.material_drawer_circle_mask));
-        drawer.addItem(new PrimaryDrawerItem().withName("Turma 2").withIcon(R.drawable.material_drawer_circle_mask));
+        drawer.addItem(new PrimaryDrawerItem().withName("Turma 1").withIcon(R.drawable.school));
+        drawer.addItem(new PrimaryDrawerItem().withName("Turma 2").withIcon(R.drawable.school));
         drawer.addItem(new DividerDrawerItem());
         drawer.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener));
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -146,5 +141,14 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void loadData() {
+        User user = new User();
+        TaskDao dao = new TaskDao();
+        List<Task> tasks = dao.getTasks(user);
+
+        mAdapter = new TaskListAdapter(this, tasks);
+        mRecyclerView.setAdapter(mAdapter);
     }
 }

@@ -21,12 +21,6 @@ public class Auth {
         List<Map<String, String>> credential = null;
         try {
             credential = new ApiRequest("api/v1/users/" + user.getId() + "/request_access_token", "POST", keys()).execute().get();
-
-            Map<String, String> map = credential.get(0);
-
-            accessToken = map.get(ACCESS_TOKEN);
-            expireDate = map.get(EXPIRE_DATE);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

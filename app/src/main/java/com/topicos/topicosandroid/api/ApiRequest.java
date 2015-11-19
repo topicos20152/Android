@@ -23,7 +23,7 @@ import java.util.Set;
  */
 public class ApiRequest extends AsyncTask<HashMap<String, String>, Void, List<Map<String, String>>> {
 
-    private String url = "http://topicos-api.herokuapp.com/";
+    private String url = "http://topicos-api.herokuapp.com/api/v1/";
     private String methodTarget;
     private String method;
     private List<String> keys;

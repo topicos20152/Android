@@ -43,10 +43,13 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
     public void onBindViewHolder(TaskListAdapter.CustomViewHolder customViewHolder, int i) {
         final Task task = tasks.get(i);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MMM");
+        SimpleDateFormat hourFormat = new SimpleDateFormat("hh:mm");
 
         customViewHolder.title.setText(task.getName());
-        customViewHolder.endsAt.setText(dateFormat.format(task.getDateEnd()));
+        customViewHolder.data.setText(dateFormat.format(task.getDateEnd()));
+        customViewHolder.hour.setText(hourFormat.format(task.getDateEnd()));
+        customViewHolder.subject.setText(task.getSubject().getName());
 
         customViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,13 +65,16 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.Custom
     public int getItemCount() { return tasks.size(); }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView title, endsAt;
+        protected TextView title, data, hour, subject;
 
         public CustomViewHolder(View view) {
             super(view);
 
-            this.title = (TextView) view.findViewById(R.id.title);
-            this.endsAt = (TextView) view.findViewById(R.id.ends_at);
+            this.title = (TextView) view.findViewById(R.id.txt_titulo);
+            this.data = (TextView) view.findViewById(R.id.txt_data);
+            this.hour = (TextView) view.findViewById(R.id.txt_hora);
+            this.subject = (TextView) view.findViewById(R.id.txt_turma);
+
         }
     }
 }

@@ -19,11 +19,18 @@ android {
     }
 }
 
-dependencies {
+def var = dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
     compile 'com.android.support:recyclerview-v7:+'
+    //noinspection GradleCompatible
     compile 'com.android.support:cardview-v7:21.0.+'
+
+    compile('com.mikepenz:materialdrawer:4.4.8@aar') {
+        transitive = true
+    }
+
 }
+var

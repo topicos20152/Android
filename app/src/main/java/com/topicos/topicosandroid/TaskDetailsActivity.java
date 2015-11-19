@@ -3,6 +3,7 @@ package com.topicos.topicosandroid;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.topicos.topicosandroid.dao.TaskDao;
 import com.topicos.topicosandroid.domain.Task;
@@ -38,6 +39,9 @@ public class TaskDetailsActivity extends AppCompatActivity {
             ends_at.setText(task.getDateEnd().toString().split("G")[0]);
             status.setText(task.getStatus());
             attachment.setText(task.getAttachment());
+        } else {
+            Toast.makeText(TaskDetailsActivity.this, "Not found Task!", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
     }

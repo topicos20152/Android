@@ -69,7 +69,7 @@ public class TaskDao {
     }
 
     public Task getTask(String id) {
-        Task task = new Task();
+        Task task = null;
         try {
             List<Map<String, String>> allTasks = new ApiRequest(Task.CLASS_NAME+"/"+id, "GET", Task.keys()).execute().get();
             if(allTasks == null || allTasks.isEmpty())

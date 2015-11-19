@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 .withThreeSmallProfileImages(false)
                 .withHeaderBackground(R.color.primary)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Jeffersson Galvão").withEmail("jefferssondeveloper@gmail.com").withIcon(R.drawable.material_drawer_circle_mask) // colocar informações do usuário
+                        new ProfileDrawerItem().withName(Parameter.user.getName()).withIcon(R.drawable.material_drawer_circle_mask) // colocar informações do usuário
                 )
                 .build();
 
@@ -104,8 +104,9 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build();
 
-        drawer.addItem(new PrimaryDrawerItem().withName("Turma 1").withIcon(R.drawable.school));
-        drawer.addItem(new PrimaryDrawerItem().withName("Turma 2").withIcon(R.drawable.school));
+        for (Subject sub : subjects ) {
+            drawer.addItem(new PrimaryDrawerItem().withName(sub.getName()).withIcon(R.drawable.school));
+        }
         drawer.addItem(new DividerDrawerItem());
         drawer.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener));
 

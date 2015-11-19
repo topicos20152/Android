@@ -23,23 +23,45 @@ public class TaskDao {
         List<Task> tasks = new ArrayList<Task>();
 
         try {
-            List<Map<String, String>> allTasks = new ApiRequest(Task.CLASS_NAME, "GET", Task.keys()).execute().get();
-            if(allTasks == null || allTasks.isEmpty())
-                return tasks;
+//            List<Map<String, String>> allTasks = new ApiRequest(Task.CLASS_NAME, "GET", Task.keys()).execute().get();
+//            if(allTasks == null || allTasks.isEmpty())
+//                return tasks;
+//
+//            for (Map<String, String> taskMap : allTasks) {
+//                Task task = new Task();
+//
+//                task.setId(taskMap.get(Task.ID));
+//                task.setName(taskMap.get(Task.NAME));
+//                task.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", taskMap.get(Task.SUBJECT)));
+//
+//                //Formatting date
+//                SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+//                task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_END)));
+//
+//                tasks.add(task);
+//            }
 
-            for (Map<String, String> taskMap : allTasks) {
-                Task task = new Task();
+                Task task1 = new Task();
+                Task task2 = new Task();
 
-                task.setId(taskMap.get(Task.ID));
-                task.setName(taskMap.get(Task.NAME));
-                task.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", taskMap.get(Task.SUBJECT)));
+                task1.setId("1");
+                task1.setName("Tarefa 1");
+                task1.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", "Teste"));
 
                 //Formatting date
                 SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-                task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_END)));
+                task1.setDateEnd(inFormat.parse("2015-10-28T12:24:39.557Z"));
 
-                tasks.add(task);
-            }
+                tasks.add(task1);
+
+                task2.setId("2");
+                task2.setName("Tarefa 2");
+                task2.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", "Teste"));
+
+                //Formatting date
+                task2.setDateEnd(inFormat.parse("2015-10-28T12:24:39.557Z"));
+
+                tasks.add(task2);
         } catch (Exception e) {
             e.printStackTrace();
         }

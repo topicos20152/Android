@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private Drawer drawer;
     private AccountHeader accountHeader;
 
+    private int positionClicked;
+
     private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
@@ -92,6 +94,15 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        for(int count = 0, tam = subjects.size(); count < tam; count++) {
+                            PrimaryDrawerItem aux = (PrimaryDrawerItem) drawer.getDrawerItems().get(count);
+                            aux.withIcon(getResources().getDrawable(R.drawable.school));
+                        }
+                        if(position <= subjects.size()) {
+                            ((PrimaryDrawerItem) drawerItem).withIcon(getResources().getDrawable(R.drawable.school_select));
+                        }
+                        positionClicked = position;
+                        drawer.getAdapter().notifyDataSetChanged();
                         return false;
                     }
                 })

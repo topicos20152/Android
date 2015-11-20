@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        for (int count = 0, tam = subjects.size(); count < tam; count++) {
+                        for (int count = 1, tam = subjects.size(); count <= tam; count++) {
                             PrimaryDrawerItem aux = (PrimaryDrawerItem) drawer.getDrawerItems().get(count);
                             aux.withIcon(getResources().getDrawable(R.drawable.school));
                         }

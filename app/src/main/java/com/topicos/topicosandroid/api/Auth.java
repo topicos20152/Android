@@ -20,7 +20,7 @@ public class Auth {
     private List<Map<String, String>> getCredential(User user) {
         List<Map<String, String>> credential = null;
         try {
-            credential = new ApiRequest("api/v1/users/" + user.getId() + "/request_access_token", "POST", keys()).execute().get();
+            credential = new ApiRequest("users/" + user.getId() + "/request_access_token", "POST", keys()).execute().get();
         } catch (Exception e) {
             e.printStackTrace();
         }

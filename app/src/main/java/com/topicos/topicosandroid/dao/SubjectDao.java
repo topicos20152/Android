@@ -4,6 +4,7 @@ import com.topicos.topicosandroid.api.API;
 import com.topicos.topicosandroid.api.ApiRequest;
 import com.topicos.topicosandroid.domain.Subject;
 import com.topicos.topicosandroid.domain.User;
+import com.topicos.topicosandroid.utils.Parameter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,16 +18,16 @@ public class SubjectDao {
 
     public SubjectDao() {}
 
-    public List<Subject> getSubjects(User user) {
+    public List<Subject> getSubjects() {
 
         List<Subject> subjects = new ArrayList<>();
 
-        /*
         try {
             HashMap<String, String> params = new HashMap<>();
-            params.put("user_id", user.getId());
+            params.put("access_token", "o1XVRi905ZXSoCG5UFr9WQ");
 
-            List<Map<String, String>> allSubjects = new ApiRequest(Subject.CLASS_NAME, "GET", Subject.keys()).execute(params).get();
+            List<Map<String, String>> allSubjects = new ApiRequest("users/"+ "564ce3525e5ca90003000005" +
+                    "/courses", "GET", Subject.keys()).execute(params).get();
             if(allSubjects == null || allSubjects.isEmpty())
                 return subjects;
 
@@ -41,13 +42,14 @@ public class SubjectDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        */
+        /*
 
         //The data should be mocked, because I thought getSubjects was available on API, but, it wasn't.
         if(subjects == null || subjects.isEmpty()) {
             API api = new API();
             subjects = api.getSubjects();
         }
+        */
 
         return subjects;
     }

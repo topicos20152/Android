@@ -1,6 +1,5 @@
 package com.topicos.topicosandroid;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -62,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Mocking user with the same data from api
-        //if(Parameter.user == null)
-        //    Parameter.user = new User("563cc7738995e50003000001", "123456", "Android Test", "android_test");
+        if(Parameter.user == null)
+            Parameter.user = new User("564d2b96bdd55b0003000001", "0010", "android user", "android_user");
 
         SubjectDao dao = new SubjectDao();
-        subjects = dao.getSubjects(Parameter.user);
+        subjects = dao.getSubjects();
 
         accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)

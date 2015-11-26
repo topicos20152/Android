@@ -21,6 +21,7 @@ import com.mikepenz.materialdrawer.interfaces.OnCheckedChangeListener;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.topicos.topicosandroid.adapter.TaskListAdapter;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Drawer drawer;
     private AccountHeader accountHeader;
+
+    private int positionClicked;
 
     private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
         @Override
@@ -91,6 +94,15 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        for (int count = 1, tam = subjects.size(); count <= tam; count++) {
+                            PrimaryDrawerItem aux = (PrimaryDrawerItem) drawer.getDrawerItems().get(count);
+                            aux.withIcon(getResources().getDrawable(R.drawable.school));
+                        }
+                        if (position <= subjects.size()) {
+                            ((PrimaryDrawerItem) drawerItem).withIcon(getResources().getDrawable(R.drawable.school_select));
+                        }
+                        positionClicked = position;
+                        drawer.getAdapter().notifyDataSetChanged();
                         return false;
                     }
                 })
@@ -103,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build();
 
+        drawer.addItem(new SectionDrawerItem().withName("Turmas"));
         for (Subject sub : subjects ) {
             drawer.addItem(new PrimaryDrawerItem().withName(sub.getName()).withIcon(R.drawable.school));
         }

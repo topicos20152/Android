@@ -25,7 +25,8 @@ public class SubjectDao {
         try {
             HashMap<String, String> params = new HashMap<>();
             params.put("access_token", "o1XVRi905ZXSoCG5UFr9WQ");
-
+            //http://topicos-api.herokuapp.com/api/v1/users/564ce3525e5ca90003000005/courses?access_token=o1XVRi905ZXSoCG5UFr9WQ&
+            //http://topicos-api.herokuapp.com/api/v1/users/564ce3525e5ca90003000005/courses?access_token=o1XVRi905ZXSoCG5UFr9WQ&
             List<Map<String, String>> allSubjects = new ApiRequest("users/"+ "564ce3525e5ca90003000005" +
                     "/courses", "GET", Subject.keys()).execute(params).get();
             if(allSubjects == null || allSubjects.isEmpty())

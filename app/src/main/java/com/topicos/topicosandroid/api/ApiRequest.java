@@ -23,7 +23,7 @@ import java.util.Set;
  */
 public class ApiRequest extends AsyncTask<HashMap<String, String>, Void, List<Map<String, String>>> {
 
-    private String url = "http://topicos-api.herokuapp.com/";
+    private String url = "http://topicos-api.herokuapp.com/api/v1/";
     private String methodTarget;
     private String method;
     private List<String> keys;
@@ -58,6 +58,16 @@ public class ApiRequest extends AsyncTask<HashMap<String, String>, Void, List<Ma
         List<Map<String, String>> resultList = new ArrayList<>();
 
         try {
+
+            //Inserting parameters, if it exists
+            if(params != null && params.length>0) {
+                myurl += "?";
+                HashMap<String, String> map = params[0];
+                Set<String> keys = map.keySet();
+                for(String key : keys)
+                    myurl += key += "=" + map.get(key) + "&";
+            }
+
             URL url = new URL(myurl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000);
@@ -65,14 +75,6 @@ public class ApiRequest extends AsyncTask<HashMap<String, String>, Void, List<Ma
             conn.setRequestMethod(method);
             conn.setDoInput(true);
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
-            //Inserting parameters, if it exists
-            if(params != null && params.length>0) {
-                HashMap<String, String> map = params[0];
-                Set<String> keys = map.keySet();
-                for(String key : keys)
-                    conn.addRequestProperty(key, map.get(key));
-            }
 
             // Starts the query
             conn.connect();

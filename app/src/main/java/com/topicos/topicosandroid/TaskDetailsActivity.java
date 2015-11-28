@@ -36,7 +36,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
             subject.setText(task.getSubject().getName());
             title.setText(task.getName());
             description.setText(task.getDescription());
-            ends_at.setText(task.getDateEnd().toString().split("G")[0]);
+            ends_at.setText(task.getDateEnd().toString().split("T")[0]);
             status.setText(task.getStatus());
             attachment.setText(task.getAttachment());
         } else {

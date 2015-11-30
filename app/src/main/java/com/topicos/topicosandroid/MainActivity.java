@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             drawer.addItem(new PrimaryDrawerItem().withName(sub.getName()).withIcon(R.drawable.school));
         }
         drawer.addItem(new DividerDrawerItem());
-        drawer.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener));
+//        drawer.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener));
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);

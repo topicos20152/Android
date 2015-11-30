@@ -7,6 +7,8 @@ import com.topicos.topicosandroid.domain.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -91,7 +93,7 @@ public class TaskDao {
             task.setStatus(taskMap.get(Task.STATUS));
 
             //Formatting date
-            SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+            SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS+00:00", Locale.US);
             //task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_START)));
             task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_END)));
 
@@ -107,12 +109,11 @@ public class TaskDao {
             task.setId(id);
             task.setName("Tarefa 1");
             task.setSubject(new Subject("5630be8511c8bd0003000002", "DIM0533", "Teste"));
-            task.setStatus("Aberta");
 
             //Formatting date
-            SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-            //task.setDateEnd(inFormat.parse(taskMap.get(Task.DATE_START)));
+            SimpleDateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS+00:00", Locale.US);
             task.setDateEnd(inFormat.parse("2015-11-23T20:45:00.000+00:00"));
+            task.setStatus("Fechada!");
 
             task.setDescription("SOME DESCRIPTION");
             task.setAttachment("NULL");
